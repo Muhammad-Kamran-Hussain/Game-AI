@@ -1,114 +1,37 @@
-# Game AI: Reinforcement Learning in a Maze Solver
+# 🛠️ Job Scheduler using Heap and Priority Queue
 
-## Overview
-This project focuses on developing an AI agent that learns to navigate through a maze using reinforcement learning techniques. The AI will find the shortest path to the goal by trial and error, improving its performance over time.
-
----
-
-## Purpose
-The primary goals of this project are:
-
-- To understand and implement reinforcement learning algorithms like Q-Learning.
-- To simulate a grid-based maze environment for training the agent.
-- To visualize the agent’s learning process and final solution.
+This is a simple Python project that demonstrates a **Job Scheduling System** using a **Min-Heap** and **Priority Queue**. Jobs are scheduled based on priority (lower number = higher priority) and simulated with duration timers.
 
 ---
 
-## Features
+## 📌 Features
 
-- **Customizable Maze:** Users can define their own maze layout.
-- **Interactive Visualization:** See the agent’s learning process and pathfinding steps in real-time.
-- **Learning Algorithm:** Q-Learning implementation for training the AI agent.
-- **Reward System:** Positive rewards for reaching the goal and negative rewards for hitting walls or invalid moves.
-
----
-
-## Technologies Used
-
-- **Python 3.7+**
-- **NumPy:** For numerical operations.
-- **Matplotlib:** For visualization.
-- **Optional:** Pygame for a more interactive grid-based visualization.
+- ✅ Add jobs with priority and duration
+- ✅ Automatically schedules jobs based on priority
+- ✅ Simulates job processing with `time.sleep`
+- ✅ Clean and readable object-oriented code
 
 ---
 
-## How It Works
+## 🔍 How It Works
 
-### Environment:
-
-A grid-based maze where each cell is either:
-
-- **Start Point**
-- **Goal**
-- **Path**
-- **Obstacle**
-
-The agent starts at a predefined position and explores the maze.
-
-### Q-Learning:
-
-The agent learns through a trial-and-error process, updating its Q-table based on rewards.
-
-Formula:
-\[ Q(s, a) \leftarrow Q(s, a) + \alpha [r + \gamma \max_a Q(s', a) - Q(s, a)] \]
-
-- \( \alpha \): Learning rate
-- \( \gamma \): Discount factor
-- \( r \): Reward for the action
-
-### Reward System:
-
-- **+10** for reaching the goal.
-- **-1** for invalid moves or hitting obstacles.
-- **0** for valid moves.
-
-### Visualization:
-
-The agent’s exploration and the shortest path found are visualized step-by-step.
+Jobs are pushed into a **Min-Heap** using Python’s built-in `heapq` module. The job with the **lowest priority value** is popped and executed first.
 
 ---
 
-## Files Included
+## 📂 Files
 
-- **`maze_solver.py`**: Main script for the maze environment and Q-Learning algorithm.
-- **`maze_config.json`**: A configuration file for defining custom maze layouts.
-- **`README.md`**: Documentation for the project.
-- **Optional:** A `visualizer.py` for interactive gameplay visualization using Pygame.
+- `job_scheduler.py` – Main Python script
 
 ---
 
-## Example Maze Layout
+## 🚀 Getting Started
 
-```json
-{
-  "maze": [
-    ["S", "0", "0", "X", "G"],
-    ["X", "X", "0", "X", "0"],
-    ["0", "0", "0", "0", "0"],
-    ["X", "0", "X", "X", "X"],
-    ["0", "0", "0", "X", "0"]
-  ]
-}
-```
+### ✅ Requirements
 
-- **S**: Start
-- **G**: Goal
-- **0**: Open Path
-- **X**: Obstacle
+- Python 3.x
 
----
+### ▶️ Run the Scheduler
 
-## Output
-
-- **Console:** Displays the agent's learning process, Q-table updates, and the optimal policy.
-- **Visualization:** Matplotlib or grid-based visualization of the shortest path.
-
----
-
-## Improvements & Extensions
-
-- Add dynamic obstacles to test the agent’s adaptability.
-- Implement other reinforcement learning algorithms like SARSA.
-- Use a larger or randomly generated maze.
-- Incorporate Pygame for better visualization and interaction.
-
+```bash
+python job_scheduler.py
