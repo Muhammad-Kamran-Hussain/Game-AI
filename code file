@@ -1,0 +1,45 @@
+import heapq
+import time
+
+class Job:
+    def __init__(self, job_id, name, priority, duration):
+        self.job_id = job_id
+        self.name = name
+        self.priority = priority  # Lower value means higher priority
+        self.duration = duration
+
+    def __lt__(self, other):
+        return self.priority < other.priority
+
+    def __repr__(self):
+        return f"Job({self.job_id}, {self.name}, Priority={self.priority}, Duration={self.duration}s)"
+
+
+class JobScheduler:
+    def __init__(self):
+        self.job_queue = []
+        self.job_counter = 0
+
+    def add_job(self, name, priority, duration):
+        job = Job(self.job_counter, name, priority, duration)
+        heapq.heappush(self.job_queue, job)
+        self.job_counter += 1
+        print(f"Added: {job}")
+
+    def run(self):
+        print("\n--- Running Scheduled Jobs ---")
+        while self.job_queue:
+            job = heapq.heappop(self.job_queue)
+            print(f"\nRunning: {job}")
+            time.sleep(job.duration)  # Simulate job running
+            print(f"Completed: {job.name} (Job ID: {job.job_id})")
+
+
+if __name__ == "__main__":
+    scheduler = JobScheduler()
+
+    scheduler.add_job("Send Email", priority=2, duration=1)
+    scheduler.add_job("Data Backup", priority=1, duration=2)
+    scheduler.add_job("Generate Report", priority=3, duration=1)
+
+    scheduler.run()
